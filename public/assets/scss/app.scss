@@ -1,0 +1,102 @@
+/*!
+ * AdminKit v3.3.0 (https://adminkit.io/)
+ * Copyright 2022 Paul Laros
+ * Copyright 2022 AdminKit
+ * Licensed under MIT (https://github.com/adminkit/adminkit/blob/master/LICENSE)
+ */
+
+// Variables
+@import "1-variables/app";
+
+// Bootstrap
+@import "bootstrap/_functions";
+@import "bootstrap/_variables";
+//@import "bootstrap/_maps";
+@import "bootstrap/_mixins";
+@import "bootstrap/_utilities";
+@import "bootstrap/_root";
+@import "bootstrap/_reboot";
+@import "bootstrap/_type";
+@import "bootstrap/_images";
+@import "bootstrap/_containers";
+@import "bootstrap/_grid";
+@import "bootstrap/_tables";
+@import "bootstrap/_forms";
+@import "bootstrap/_buttons";
+@import "bootstrap/_transitions";
+@import "bootstrap/_dropdown";
+@import "bootstrap/_button-group";
+@import "bootstrap/_nav";
+@import "bootstrap/_navbar";
+@import "bootstrap/_card";
+@import "bootstrap/_badge";
+@import "bootstrap/_list-group";
+@import "bootstrap/_close";
+@import "bootstrap/_helpers";
+@import "bootstrap/utilities/_api";
+
+// Theme mixins
+@import "2-mixins/button";
+
+
+// Theme components
+@import "3-components/avatar";
+@import "3-components/buttons";
+@import "3-components/card";
+@import "3-components/chart";
+@import "3-components/content";
+@import "3-components/dropdown";
+@import "3-components/feather";
+@import "3-components/footer";
+@import "3-components/hamburger";
+@import "3-components/list-group";
+@import "3-components/main";
+@import "3-components/navbar";
+@import "3-components/reboot";
+@import "3-components/sidebar";
+@import "3-components/sizing";
+@import "3-components/stat";
+@import "3-components/tables";
+@import "3-components/type";
+@import "3-components/wrapper";
+
+// Theme utilities
+@import "4-utilities/cursors";
+
+// 3rd party plugins
+//@import "~jsvectormap/dist/css/jsvectormap";
+//@import "~simplebar/dist/simplebar";
+//@import "~flatpickr/dist/flatpickr";
+
+// 3rd party plugin styles
+@import "5-vendor/flatpickr";
+@import "5-vendor/simplebar";
+
+a{
+    color: #000;
+}
+
+.btn{
+    background: #1583a0 !important;
+    color: #fff !important;
+}
+
+a.btn{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+a:hover i{
+    background: #1583a0 !important;
+    color: #1583a0 !important;
+}
+.nav-item .indicator{
+    background: #1583a0 !important;
+}
+.nav-icon:hover, .nav-icon.active, .nav-flag:hover, .nav-flag.active{
+    color: #1583a0 !important;
+}
+.ts-control{
+    border: none !important;
+}

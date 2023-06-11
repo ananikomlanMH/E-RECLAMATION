@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+{{ form_row(form.intitule) }}
+{{ form_row(form.corps) }}
+{{ form_row(form.priorite) }}
+
+<div class="{% if app.user.type == '0' %}hidden{% endif %}">
+    {{ form_row(form.etat) }}
+</div>
+{{ form_row(form.date) }}
+{{ form_row(form.file) }}
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

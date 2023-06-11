@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+    {{ form_row(form.matricule, {label: 'Matricule'}) }}
+                                {{ form_row(form.name, {label: 'Nom'}) }}
+                                {{ form_row(form.surname, {label: 'Prénom'}) }}
+                                {{ form_row(form.genre) }}
+                                {{ form_row(form.telephone, {label: 'Téléphone'}) }}
+                                {{ form_row(form.adresse, {label: 'Adresse'}) }}
+                                {{ form_row(form.email) }}
+                                {{ form_row(form.plainPassword, {
+                                    label: 'Password'
+                                }) }}
+
+    <div class="{% if app.user.type == '0' %}hidden{% endif %}">
+        {{ form_row(form.type) }}
+    </div>
+
+
+{{ form_row(form.agreeTerms, {
+    label: "J'accepte les conditions d'utlisation."
+}) }}
+
+<button class="btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

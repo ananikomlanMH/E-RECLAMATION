@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Liste des agents</title>
+
+    <style>
+        .header-text{
+            text-align: center;
+            width: 50%;
+        }
+
+        .header-bar{
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #104e94;
+            border-radius: 4px 4px 4px 4px;
+        }
+
+        .header-bar tr{
+            border-radius: 4px;
+        }
+
+        .listTable {
+            width: 100%;
+            background-color: #ffffff;
+            border-collapse: collapse;
+            color: #000000;
+        }
+        .header-table {
+            width: 100%;
+            background-color: #ffffff;
+            border-collapse: collapse;
+            border-width: 1px;
+            border-color: #e2e2e2;
+            border-style: solid;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .header-table td{
+            border-width: 1px;
+            border-color: #e2e2e2;
+            border-style: solid;
+            padding: 10px 15px;
+        }
+        .listTable td, .listTable th {
+            border: 1px solid #d9d9d9;
+            padding: 10px;
+            font-size: .8em;
+        }
+        .listTable thead tr{
+            background: #1583a0;
+            color: white;
+        }
+        .listTable th{
+            text-align: center;
+            border-color: #fff;
+        }
+
+        .listTable tr:nth-child(2n){
+            background: transparent;
+        }
+
+        .footer{
+            background: rgba(16,78,148,0.25);
+            border: 1px solid #104e94;
+        }
+        .total{
+            background-color: #104e94cf;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .footer td{
+            border: 1px solid #104e94;
+        }
+        .main{
+            margin: 0 35px;
+        }
+    </style>
+</head>
+<body>
+<table style="width: 100%;">
+    <tr>
+        <td><img src="{{imageSrc}}" alt="" style="width: 100%;"></td>
+    </tr>
+</table>
+<table class='listTable' style="margin-top: 50px;">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Tel</th>
+        <th>Fonction</th>
+        <th>Matricule</th>
+        <th>Genre</th>
+        <th>Adresse</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for agent in agents %}
+        <tr>
+            <td>{{ agent.id }}</td>
+            <td>{{ agent.nom }}</td>
+            <td>{{ agent.prenom }}</td>
+            <td>{{ agent.tel }}</td>
+            <td>{{ agent.fonction }}</td>
+            <td>{{ agent.matricule }}</td>
+            <td>{{ agent.genre }}</td>
+            <td>{{ agent.adresse }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="9" style="text-align:center;">Aucun enregistrement trouvé.</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

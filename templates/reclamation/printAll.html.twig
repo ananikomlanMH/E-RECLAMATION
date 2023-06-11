@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Reclamation</title>
+
+    <style>
+        .header-text{
+            text-align: center;
+            width: 50%;
+        }
+
+        .header-bar{
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #104e94;
+            border-radius: 4px 4px 4px 4px;
+        }
+
+        .header-bar tr{
+            border-radius: 4px;
+        }
+
+        .listTable {
+            width: 100%;
+            background-color: #ffffff;
+            border-collapse: collapse;
+            color: #000000;
+        }
+        .header-table {
+            width: 100%;
+            background-color: #ffffff;
+            border-collapse: collapse;
+            border-width: 1px;
+            border-color: #e2e2e2;
+            border-style: solid;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .header-table td{
+            border-width: 1px;
+            border-color: #e2e2e2;
+            border-style: solid;
+            padding: 10px 15px;
+        }
+        .listTable td, .listTable th {
+            border: 1px solid #d9d9d9;
+            padding: 10px;
+            font-size: .8em;
+        }
+        .listTable thead tr{
+            background: #1583a0;
+            color: white;
+        }
+        .listTable th{
+            text-align: center;
+            border-color: #fff;
+        }
+
+        .listTable tr:nth-child(2n){
+            background: transparent;
+        }
+
+        .footer{
+            background: rgba(16,78,148,0.25);
+            border: 1px solid #104e94;
+        }
+        .total{
+            background-color: #104e94cf;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .footer td{
+            border: 1px solid #104e94;
+        }
+        .main{
+            margin: 0 35px;
+        }
+    </style>
+</head>
+<body>
+<table style="width: 100%;">
+    <tr>
+        <td><img src="{{imageSrc}}" alt="" style="width: 100%;"></td>
+    </tr>
+</table>
+<br>
+<hr>
+
+<h1>Reclamations</h1>
+
+{% for reclamation in reclamations %}
+<table class="listTable">
+    <thead>
+    <tr>
+        <th colspan="2">Reclamation #{{ reclamation.id }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Id</td>
+        <td>{{ reclamation.id }}</td>
+    </tr>
+    <tr>
+        <td>Intitule</td>
+        <td>{{ reclamation.intitule }}</td>
+    </tr>
+    <tr>
+        <td>Corps</td>
+        <td>{{ reclamation.corps }}</td>
+    </tr>
+    <tr>
+        <td>Priorite</td>
+        <td>{{ reclamation.priorite }}</td>
+    </tr>
+    <tr>
+        <td>Etat</td>
+        <td>{{ reclamation.etat }}</td>
+    </tr>
+    <tr>
+        <td>Date</td>
+        <td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
+    </tr>
+    <tr>
+        <td>Piece jointe</td>
+        <td>
+            {% if reclamation.file %}
+                <a target="_blank"
+                   href="{{ asset('uploads/reclamations/' ~ reclamation.file) }}">Télécharger</a>
+            {% else %}
+                -
+            {% endif %}
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+<br>
+{% endfor %}
+</body>
+</html>

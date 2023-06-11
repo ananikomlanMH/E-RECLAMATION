@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Structure index{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between">
+        <h1>Structure</h1>
+        <div class="d-flex gap-2">
+            <a target="_blank" href="{{ path('agent.print') }}" class="btn btn-primary">Imprimer <i class="align-middle" data-feather="print"></i></a>
+            <a href="{{ path('app_structure_new') }}" class="btn btn-primary">Nouveau <i class="align-middle" data-feather="plus"></i></a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Designation</th>
+                <th>Localisation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for structure in structures %}
+            <tr>
+                <td>{{ structure.id }}</td>
+                <td>{{ structure.designation }}</td>
+                <td>{{ structure.localisation }}</td>
+                <td>
+                    <a href="{{ path('app_structure_show', {'id': structure.id}) }}">Voir</a>
+                    <a href="{{ path('app_structure_edit', {'id': structure.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4" style="text-align:center;">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

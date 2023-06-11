@@ -1,0 +1,37 @@
+.sidebar-item.active .sidebar-link:hover, .sidebar-item.active>.sidebar-link {
+    background: linear-gradient(90deg, rgb(15 116 142 / 80%), rgb(15 116 142 / 80%) 50%, transparent);
+    border-left-color: #074758;
+    color: #e9ecef;
+}
+
+.ts-control{
+    border: none !important;
+}
+
+.btn, .btn:visited, .btn:hover{
+    background: #1583a0;
+    color: white;
+}
+
+textarea{
+    height: 130px;
+}
+
+.hidden{
+    display: none;
+}
+
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}

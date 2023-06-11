@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between">
+        <h1>Reclamation</h1>
+        <div class="d-flex gap-2">
+            <a target="_blank" href="{{ path('app_reclamation_printAll') }}" class="btn btn-primary">Imprimer <i class="align-middle"
+                                                                                                    data-feather="print"></i></a>
+            <a href="{{ path('app_reclamation_new') }}" class="btn btn-primary">Nouveau <i class="align-middle"
+                                                                                           data-feather="plus"></i></a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Usager</th>
+            <th>Intitule</th>
+            <th>Corps</th>
+            <th>Priorite</th>
+            <th>Etat</th>
+            <th>Date</th>
+            <th>Piece Jointe</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.id }}</td>
+                <td>{{ reclamation.usagerId.name }} {{ reclamation.usagerId.surname }}</td>
+                <td>{{ reclamation.intitule }}</td>
+                <td>{{ reclamation.excerptCorps }}</td>
+                <td>{{ reclamation.priorite }}</td>
+                <td>{{ reclamation.etat }}</td>
+                <td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
+                <td>{% if reclamation.file %}
+                        <a target="_blank"
+                           href="{{ asset('uploads/reclamations/' ~ reclamation.file) }}">Télécharger</a>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}">Voir</a>
+                    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>
+                    <a target="_blank" href="{{ path('app_reclamation_print', {'id': reclamation.id}) }}">Imprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6" style="text-align:center;">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

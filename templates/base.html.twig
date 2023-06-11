@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ministère des finances | {% block title %}{{ '2023' }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/Old/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/Old/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/simplebar.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tom-select.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}" type="image/x-icon">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body style="">
+
+<div class="wrapper">
+    <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+            <a class="sidebar-brand" href="{{ path('home.index') }}" style="background: #f5f5f5;">
+                <img src="{{ asset('assets/img/Groupe 317.png') }}" alt="">
+            </a>
+
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-header">
+                    Reclamations
+                </li>
+
+                <li class="sidebar-item {{ app.request.get('_route') starts with 'home' ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ path('home.index') }}">
+                        <i class="align-middle" data-feather="activity"></i> <span
+                                class="align-middle">Tableau de bord</span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item {{ app.request.get('_route') starts with 'app_reclamation' ? 'active' : '' }}">
+                    <a class="sidebar-link" href="{{ path('app_reclamation_index') }}">
+                        <i class="align-middle" data-feather="folder"></i> <span
+                                class="align-middle">Reclamations</span>
+                    </a>
+                </li>
+
+                {% if app.user.type == '1' %}
+
+                    <li class="sidebar-item {{ app.request.get('_route') starts with 'app_user' ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ path('app_user_index') }}">
+                            <i class="align-middle" data-feather="users"></i> <span class="align-middle">Usagers</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">
+                        Paramètres
+                    </li>
+
+                    <li class="sidebar-item {{ app.request.get('_route') starts with 'agent.' ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ path('agent.index') }}">
+                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Agents</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item {{ app.request.get('_route') starts with 'app_structure' ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ path('app_structure_index') }}">
+                            <i class="align-middle" data-feather="briefcase"></i> <span
+                                    class="align-middle">Structure</span>
+                        </a>
+                    </li>
+
+
+                    <li class="sidebar-header">
+                        Méssagerie
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="">
+                            <i class="align-middle" data-feather="send"></i> <span class="align-middle">E-mailing</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="">
+                            <i class="align-middle" data-feather="message-square"></i> <span
+                                    class="align-middle">SMS</span>
+                        </a>
+                    </li>
+
+                {% else %}
+                    <li class="sidebar-item {{ app.request.get('_route') starts with 'app_user' ? 'active' : '' }}">
+                        <a class="sidebar-link" href="{{ path('app_user_show', {'id': app.user.id}) }}">
+                            <i class="align-middle" data-feather="user"></i> <span
+                                    class="align-middle">Profile</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+
+    <div class="main" style="border-left: 1px solid #dedede;">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+            <a class="sidebar-toggle js-sidebar-toggle">
+                <i class="hamburger align-self-center"></i>
+            </a>
+            <span>{{ "now"|date("m/d/Y H:i:s") }}</span>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav navbar-align">
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+                            <div class="position-relative">
+                                <i class="align-middle" data-feather="bell"></i>
+                                <span class="indicator">4</span>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+                             aria-labelledby="alertsDropdown">
+                            <div class="dropdown-menu-header">
+                                0 New Notifications
+                            </div>
+                            <div class="list-group">
+
+                            </div>
+                            <div class="dropdown-menu-footer">
+                                <a href="#" class="text-muted">Show all notifications</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+                            <div class="position-relative">
+                                <i class="align-middle" data-feather="message-square"></i>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0"
+                             aria-labelledby="messagesDropdown">
+                            <div class="dropdown-menu-header">
+                                <div class="position-relative">
+                                    4 New Messages
+                                </div>
+                            </div>
+                            <div class="list-group">
+
+                            </div>
+                            <div class="dropdown-menu-footer">
+                                <a href="#" class="text-muted">Show all messages</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                            <i class="align-middle" data-feather="settings"></i>
+                        </a>
+
+                        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                            <span class="text-dark">{{ app.user.name ?? "User" }} {{ app.user.surname }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="{{ path('app_logout') }}">Log out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="content">
+            <div class="container-fluid p-0">
+
+                {% for notice in app.flashes('notice') %}
+                <div class="alert alert-success">{{ notice }}</div>
+                {% endfor %}
+                {% block body %}{% endblock %}
+            </div>
+        </main>
+
+
+    </div>
+</div>
+
+<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets/js/tom-select.complete.min.js') }}"></script>
+
+<script>
+    let settings = {allowEmptyOption: true,};
+    new TomSelect('select', settings);
+</script>
+</body>
+</html>

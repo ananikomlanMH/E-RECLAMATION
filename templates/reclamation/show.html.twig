@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+    <h1>Reclamation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Usager</th>
+                <td>{{ reclamation.usagerId.name }} {{ reclamation.usagerId.surname }}</td>            </tr>
+            <tr>
+                <th>Intitule</th>
+                <td>{{ reclamation.intitule }}</td>
+            </tr>
+            <tr>
+                <th>Corps</th>
+                <td>{{ reclamation.corps }}</td>
+            </tr>
+            <tr>
+                <th>Priorite</th>
+                <td>{{ reclamation.priorite }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ reclamation.date ? reclamation.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Piece jointe</th>
+                <td>
+                    {% if reclamation.file %}
+                        <a target="_blank"
+                           href="{{ asset('uploads/reclamations/' ~ reclamation.file) }}">Télécharger</a>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reclamation_index') }}">Revenir à la liste</a>
+
+    <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+{% endblock %}

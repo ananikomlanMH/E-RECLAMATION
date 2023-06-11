@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between">
+        <h1>Usagers</h1>
+        <div class="d-flex gap-2">
+            <a target="_blank" href="{{ path('agent.print') }}" class="btn btn-primary">Imprimer <i class="align-middle" data-feather="print"></i></a>
+            <a href="{{ path('app_user_new') }}" class="btn btn-primary">Nouveau <i class="align-middle" data-feather="plus"></i></a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Type Compte</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Genre</th>
+                <th>Matricule</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.surname }}</td>
+                <td>{% if user.type == '0' %}Usager {% else %}Agent{% endif %}</td>
+                <td>{{ user.email }}</td>
+{#                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>#}
+                <td>*******</td>
+                <td>{{ user.genre }}</td>
+                <td>{{ user.matricule }}</td>
+                <td>{{ user.adresse }}</td>
+                <td>{{ user.telephone }}</td>
+                <td>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}">Voir</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11" style="text-align:center;">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

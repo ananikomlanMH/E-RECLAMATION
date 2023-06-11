@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Agent{% endblock %}
+
+{% block body %}
+    <h1>Edtion Agent</h1>
+
+    {{ include('agent/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    {{ include('agent/_delete_form.html.twig') }}
+{% endblock %}

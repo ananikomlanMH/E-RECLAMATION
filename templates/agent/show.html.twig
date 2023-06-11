@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agent{% endblock %}
+
+{% block body %}
+    <h1>Agent</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agent.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ agent.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ agent.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ agent.tel }}</td>
+            </tr>
+            <tr>
+                <th>Fonction</th>
+                <td>{{ agent.fonction }}</td>
+            </tr>
+            <tr>
+                <th>Matricule</th>
+                <td>{{ agent.matricule }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ agent.genre }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ agent.adresse }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('agent.index') }}">Revenir à la liste</a>
+
+    <a href="{{ path('agent.edit', {'id': agent.id}) }}">Modifier</a>
+
+    {{ include('agent/_delete_form.html.twig') }}
+{% endblock %}

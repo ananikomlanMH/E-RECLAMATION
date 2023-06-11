@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <h1 class="h3 mb-3">Tableau de bord</h1>
+    <div class="row">
+        <div class="card col-lg-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col mt-0">
+                        <h5 class="card-title">Reclamantion en attente</h5>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="stat text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="mt-1 mb-3">{{ count_attente }}</h1>
+
+            </div>
+        </div>
+
+        <div class="card col-lg-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col mt-0">
+                        <h5 class="card-title">Reclamantion en cours</h5>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="stat text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="mt-1 mb-3">{{ count_encours }}</h1>
+
+            </div>
+        </div>
+
+        <div class="card col-lg-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col mt-0">
+                        <h5 class="card-title">Reclamantion traité</h5>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="stat text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package align-middle"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                        </div>
+                    </div>
+                </div>
+                <h1 class="mt-1 mb-3">{{ count_traite }}</h1>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
